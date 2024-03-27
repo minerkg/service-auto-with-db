@@ -1,26 +1,26 @@
 package org.postuniv.serviceAuto.repository;
 
-import org.postuniv.serviceAuto.domain.ClinetCard;
+import org.postuniv.serviceAuto.domain.ClientCard;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClientCardRepositoryImpl implements ClientCardRepository{
 
-    private List<ClinetCard> clientCardsList;
+    private List<ClientCard> clientCardsList;
 
     public ClientCardRepositoryImpl() {
         clientCardsList = new ArrayList<>();
     }
 
     @Override
-    public void addNewClientCard(ClinetCard clinetCard) {
-        clientCardsList.add(clinetCard);
+    public void addNewClientCard(ClientCard clientCard) {
+        clientCardsList.add(clientCard);
     }
 
     @Override
     public boolean removeClientCard(int id) {
-         return clientCardsList.removeIf(clinetCard -> clinetCard.getId() == id);
+         return clientCardsList.removeIf(clientCard -> clientCard.getId() == id);
     }
 
     @Override

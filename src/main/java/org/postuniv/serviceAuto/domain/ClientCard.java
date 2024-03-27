@@ -1,8 +1,9 @@
 package org.postuniv.serviceAuto.domain;
 
+
 import java.util.Date;
 
-public class ClinetCard {
+public class ClientCard {
 
     //the ID is unique
     private int id;
@@ -12,7 +13,7 @@ public class ClinetCard {
     private Date birthDate;
     private Date registrationDate;
 
-    public ClinetCard(int id, String firstName, String lastName, String CNP, Date birthDate, Date registrationDate) {
+    public ClientCard(int id, String firstName, String lastName, String CNP, Date birthDate, Date registrationDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -68,4 +69,5 @@ public class ClinetCard {
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
+
 }
