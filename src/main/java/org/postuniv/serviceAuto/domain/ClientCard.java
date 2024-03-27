@@ -20,6 +20,7 @@ public class ClientCard {
         this.CNP = CNP;
         this.birthDate = birthDate;
         this.registrationDate = registrationDate;
+
     }
 
     public int getId() {
@@ -53,6 +54,7 @@ public class ClientCard {
     public void setCNP(String CNP) {
         this.CNP = CNP;
     }
+
 
     public Date getBirthDate() {
         return birthDate;
