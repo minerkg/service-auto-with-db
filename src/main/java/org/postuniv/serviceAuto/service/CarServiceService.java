@@ -7,6 +7,7 @@ import org.postuniv.serviceAuto.repository.ClientCardRepository;
 
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,7 +54,18 @@ public class CarServiceService {
 
     // ----------Client Card services --------------
 
+    // ---add
+    // TODO: CNP must be unique, we have to check it here
+    public boolean addNewClientCard(int id, String firstName, String lastName, String CNP, Date birthDate, LocalDate registrationDate) {
+        // - implementation
+        return true;
+    }
 
+    // ---delete
+    // ---update
+    // ---read one
+    // full text search
+    // ---read all
 
 
 

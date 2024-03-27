@@ -14,8 +14,8 @@ public class ClientCardRepositoryImpl implements ClientCardRepository{
     }
 
     @Override
-    public void addNewClientCard(ClientCard clientCard) {
-        clientCardsList.add(clientCard);
+    public boolean addNewClientCard(ClientCard clientCard) {
+        return clientCardsList.add(clientCard);
     }
 
     @Override
