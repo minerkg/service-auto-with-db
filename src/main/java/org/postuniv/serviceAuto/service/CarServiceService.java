@@ -2,7 +2,8 @@ package org.postuniv.serviceAuto.service;
 
 import org.postuniv.serviceAuto.domain.Car;
 import org.postuniv.serviceAuto.repository.CarServiceRepository;
-import org.postuniv.serviceAuto.repository.CarServiceRepositoryImpl;
+
+import org.postuniv.serviceAuto.repository.ClientCardRepository;
 
 import java.time.LocalDate;
 import java.util.Comparator;
@@ -12,10 +13,12 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.toList;
 
 public class CarServiceService {
-    CarServiceRepositoryImpl carRepo;
+    private final CarServiceRepository carRepo;
+    private final ClientCardRepository clientCardRepository;
 
-    public CarServiceService(CarServiceRepository carRepo) {
-        this.carRepo = (CarServiceRepositoryImpl) carRepo;
+    public CarServiceService(CarServiceRepository carRepo, ClientCardRepository clientCardRepository) {
+        this.carRepo = carRepo;
+        this.clientCardRepository = clientCardRepository;
     }
 
     public List<Car> getAllCars(){
@@ -45,6 +48,14 @@ public class CarServiceService {
         carRepo.delete(idCar);//TODO catch RuntimeException("Car not exist");
         return true;
     }
+
+
+
+    // ----------Client Card services --------------
+
+
+
+
 
 
 }
