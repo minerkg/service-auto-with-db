@@ -41,10 +41,10 @@ public class Car {
         return yearOfAquisition;
     }
 
-    public void setYearOfAquisition(LocalDate yearOfAquisition) {
+    public final void setYearOfAquisition(LocalDate yearOfAquisition) {
 
         if (yearOfAquisition.isAfter(LocalDate.now())) {
-           throw new RuntimeException("Year of acquisition can not be in the future");
+           throw new RuntimeException("Year of acquisition can not be in the future"); //TODO: handle exception
         }
         this.yearOfAquisition=yearOfAquisition;
     }
