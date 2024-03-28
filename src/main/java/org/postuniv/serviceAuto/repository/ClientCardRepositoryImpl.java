@@ -14,8 +14,8 @@ public class ClientCardRepositoryImpl implements ClientCardRepository{
     }
 
     @Override
-    public void addNewClientCard(ClientCard clientCard) {
-        clientCardsList.add(clientCard);
+    public boolean addNewClientCard(ClientCard clientCard) {
+        return clientCardsList.add(clientCard);
     }
 
     @Override
@@ -24,17 +24,27 @@ public class ClientCardRepositoryImpl implements ClientCardRepository{
     }
 
     @Override
-    public void getAllClientCards() {
-
+    public List<ClientCard> getAllClientCards() {
+        return clientCardsList.stream().toList();
     }
 
     @Override
-    public void getClientCard(String firstName, String lastName) {
-
+    public ClientCard getClientCard(String firstName, String lastName) {
+        return clientCardsList.stream().
+                filter(clientCard -> clientCard.getFirstName().contains(firstName) ||
+                        clientCard.getLastName().contains(lastName)).
+                findFirst().
+                orElse(null);
     }
 
     @Override
-    public void updateClientCard() {
-
+    public boolean updateClientCard(ClientCard updatedClientCard) {
+        for (ClientCard clientCard: clientCardsList) {
+            if (clientCard.getId() == updatedClientCard.getId()) {
+                clientCard = updatedClientCard;
+                return true;
+            }
+        }
+        return false;
     }
 }
