@@ -1,7 +1,8 @@
 package org.postuniv.serviceAuto.domain;
 
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class ClientCard {
 
@@ -10,16 +11,17 @@ public class ClientCard {
     private String firstName;
     private String lastName;
     private String CNP;
-    private Date birthDate;
-    private Date registrationDate;
+    private LocalDate birthDate;
+    private LocalDate registrationDate;
 
-    public ClientCard(int id, String firstName, String lastName, String CNP, Date birthDate, Date registrationDate) {
+    public ClientCard(int id, String firstName, String lastName, String CNP, LocalDate birthDate, LocalDate registrationDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.CNP = CNP;
         this.birthDate = birthDate;
         this.registrationDate = registrationDate;
+
     }
 
     public int getId() {
@@ -54,19 +56,20 @@ public class ClientCard {
         this.CNP = CNP;
     }
 
-    public Date getBirthDate() {
+
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
-    public Date getRegistrationDate() {
+    public LocalDate getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
 
