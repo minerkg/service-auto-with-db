@@ -15,9 +15,9 @@ public class TransactionsRepositoryImpl implements TransactionsRepository {
     }
 
     @Override
-    public Transaction getTransactionById(long transaction_id) {
+    public Transaction getTransactionById(long transactionId) {
       for (Transaction tr : transactions){
-          if (tr.getTransactionId() == transaction_id){
+          if (tr.getTransactionId() == transactionId){
               return tr;
           }
       }
@@ -34,9 +34,9 @@ public class TransactionsRepositoryImpl implements TransactionsRepository {
     }
 
     @Override
-    public List<Transaction> getTransactionByClientId(int client_id) {
+    public List<Transaction> getTransactionByClientId(long clientId) {
 
-        return transactions.stream().filter(trans -> trans.getClient_card_id() == client_id).collect(Collectors.toList());
+        return transactions.stream().filter(trans -> trans.getClientCardId() == clientId).collect(Collectors.toList());
     }
 
     @Override
@@ -44,14 +44,14 @@ public class TransactionsRepositoryImpl implements TransactionsRepository {
         return transactions.
                 stream().
                 filter(
-                        transaction -> transaction.getTransaction_stamp().isAfter(startingDate) &&
-                                       transaction.getTransaction_stamp().isBefore(endingDate)).
+                        transaction -> transaction.getTransactionStamp().isAfter(startingDate) &&
+                                       transaction.getTransactionStamp().isBefore(endingDate)).
                 collect(Collectors.toList());   //TODO: move to service.
     }
 
     @Override
-    public List<Transaction> getTransactionByCarId(int carId) {
-        return transactions.stream().filter(trans -> trans.getCar_id() == carId).collect(Collectors.toList());
+    public List<Transaction> getTransactionByCarId(long carId) {
+        return transactions.stream().filter(trans -> trans.getCarId() == carId).collect(Collectors.toList());
     }
 
     @Override
@@ -76,10 +76,10 @@ public class TransactionsRepositoryImpl implements TransactionsRepository {
         if (transactionFound == null){
             return false;
         }else {
-            transactionFound.setCar_id(newTransaction.getCar_id());
-            transactionFound.setClient_card_id(newTransaction.getClient_card_id());
-            transactionFound.setPart_price(newTransaction.getPart_price());
-            transactionFound.setLabor_price(newTransaction.getLabor_price());
+            transactionFound.setCarId(newTransaction.getCarId());
+            transactionFound.setClientCardId(newTransaction.getClientCardId());
+            transactionFound.setPartPrice(newTransaction.getPartPrice());
+            transactionFound.setLaborPrice(newTransaction.getLaborPrice());
             return true;
         }
     }

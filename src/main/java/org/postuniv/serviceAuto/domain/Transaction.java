@@ -2,35 +2,34 @@ package org.postuniv.serviceAuto.domain;
 
 import java.math.RoundingMode;
 import java.text.NumberFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Transaction {
 
     private long transactionId;
-    private int car_id;
-    private int client_card_id;
-    private double part_price;
-    private double labor_price;
-    private  LocalDateTime transaction_stamp;
+    private long carId;
+    private long clientCardId;
+    private double partPrice; //TODO: atirni camel case re
+    private double laborPrice;
+    private  LocalDateTime transactionStamp;
 
     //Transaction with client card where labour price has a 10% discount.
-    public Transaction(long transactionId, int car_id, int client_card_id, double part_price, double labor_price, LocalDateTime transaction_stamp) {
+    public Transaction(long transactionId, long carId, long clientCardId, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
         this.transactionId = transactionId;
-        this.car_id = car_id;
-        this.client_card_id=client_card_id;
-        this.part_price = part_price;
-        setLabor_price(labor_price);
-        this.transaction_stamp = transaction_stamp;
+        this.carId = carId;
+        this.clientCardId = clientCardId;
+        this.partPrice = partPrice;
+        setLaborPrice(laborPrice);
+        this.transactionStamp = transactionStamp;
     }
     // Transaction without client card.
-    public Transaction(long transactionId, int car_id, double part_price, double labor_price, LocalDateTime transaction_stamp) {
+    public Transaction(long transactionId, long carId, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
         this.transactionId = transactionId;
-        this.car_id = car_id;
-        this.client_card_id = 0;
-        this.part_price = part_price;
-        this.labor_price = labor_price;
-        this.transaction_stamp = transaction_stamp;
+        this.carId = carId;
+        this.clientCardId = 0;
+        this.partPrice = partPrice;
+        this.laborPrice = laborPrice;
+        this.transactionStamp = transactionStamp;
     }
 
     public long getTransactionId() {
@@ -41,48 +40,48 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public int getCar_id() {
-        return car_id;
+    public long getCarId() {
+        return carId;
     }
 
-    public void setCar_id(int car_id) {
-        this.car_id = car_id;
+    public void setCarId(long carId) {
+        this.carId = carId;
     }
 
-    public Integer getClient_card_id() {
-        return client_card_id;
+    public long getClientCardId() {
+        return clientCardId;
     }
 
-    public void setClient_card_id(int client_card_id) {
-        if (client_card_id > 0) {
-            this.client_card_id = client_card_id;
-        } else this.client_card_id = 0;
+    public void setClientCardId(long clientCardId) {
+        if (clientCardId > 0) {
+            this.clientCardId = clientCardId;
+        } else this.clientCardId = 0;
 
     }
 
-    public double getPart_price() {
-        return part_price;
+    public double getPartPrice() {
+        return partPrice;
     }
 
-    public void setPart_price(double part_price) {
-        this.part_price = part_price;
+    public void setPartPrice(double partPrice) {
+        this.partPrice = partPrice;
     }
 
-    public double getLabor_price() {
-        return labor_price;
+    public double getLaborPrice() {
+        return laborPrice;
     }
 
-    public final void setLabor_price(double labor_price) {
-        if (this.client_card_id == 0) {
-            this.labor_price = labor_price;
+    public final void setLaborPrice(double laborPrice) {
+        if (this.clientCardId == 0) {
+            this.laborPrice = laborPrice;
         }else {
-            double discount = (labor_price*10)/100;
-            this.labor_price = labor_price-discount;
+            double discount = (laborPrice *10)/100;
+            this.laborPrice = laborPrice -discount;
         }
     }
 
-    public LocalDateTime getTransaction_stamp() {
-        return transaction_stamp;
+    public LocalDateTime getTransactionStamp() {
+        return transactionStamp;
     }
 
 
@@ -93,11 +92,11 @@ public class Transaction {
         nf.setRoundingMode(RoundingMode.UP);
         return "Transaction{" +
                 "transactionId=" + transactionId +
-                ", car_id=" + car_id +
-                ", client_card_id=" + client_card_id +
-                ", part_price=" + part_price +
-                ", labor_price=" + nf.format(labor_price) +
-                ", transaction_stamp=" + transaction_stamp +
+                ", car_id=" + carId +
+                ", client_card_id=" + clientCardId +
+                ", part_price=" + nf.format(partPrice) +
+                ", labor_price=" + laborPrice +
+                ", transaction_stamp=" + transactionStamp +
                 '}';
     }
 }
