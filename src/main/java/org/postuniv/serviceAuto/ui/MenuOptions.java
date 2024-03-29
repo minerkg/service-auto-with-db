@@ -3,6 +3,7 @@ package org.postuniv.serviceAuto.ui;
 public enum MenuOptions {
 
     EXIT ("Exit"),
+    CURD_OPTIONS ("Show crud menu"),
     SEARCH_CAR_AND_CLIENT_BY_NAME ("Search of cars and clients - full text"),
     //    3.4. Căutare mașini și clienți. Căutare full text.
     SHOW_TRANSACTIONS_BETWEEN_TWO_DATES ("Show all transactions between tow dates"),
