@@ -2,21 +2,49 @@ package org.postuniv.serviceAuto.ui;
 
 import org.postuniv.serviceAuto.service.CarServiceService;
 
+import java.util.Scanner;
+
 public class Console {
 
     private final CarServiceService carServiceService;
+    private MenuOptions menuOptions;
 
     public Console(CarServiceService carServiceService) {
         this.carServiceService = carServiceService;
     }
 
-    public void runMenu() {
-        System.out.println("Main menu implementation");
+    private void showMenuItems() {
+        for (MenuOptions menuOption: MenuOptions.values()) {
+            System.out.println(menuOption);
+        }
     }
 
 
-
-
+    public void runMenu() {
+        boolean menuIsRunning = true;
+        MenuOptions selectedOption;
+        while (menuIsRunning) {
+            showMenuItems();
+            selectedOption = MenuOptions.values()[new Scanner(System.in).nextInt()];
+            System.out.println("You selected: " + selectedOption.getOptionName());
+            switch (selectedOption) {
+                case EXIT:
+                    break;
+                case SEARCH_CAR_AND_CLIENT_BY_NAME:
+                    break;
+                case SHOW_TRANSACTIONS_BETWEEN_TWO_DATES:
+                    break;
+                case SHOW_CARS_BY_REPARATION_COSTS:
+                    break;
+                case CLIENT_CARDS_BY_DISCOUNTS:
+                    break;
+                case DELETE_TRANSACTIONS_BETWEEN_TWO_DATES:
+                    break;
+                case UPDATE_CAR_WARRANTY_STATUSES:
+                    break;
+            }
+        }
+    }
 
 
 
