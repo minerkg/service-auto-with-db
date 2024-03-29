@@ -73,4 +73,15 @@ public class ClientCard {
         this.registrationDate = registrationDate;
     }
 
+    @Override
+    public String toString() {
+        return "ClientCard{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", CNP='" + CNP + '\'' +
+                ", birthDate=" + birthDate +
+                ", registrationDate=" + registrationDate +
+                '}';
+    }
 }

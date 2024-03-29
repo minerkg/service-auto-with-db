@@ -14,9 +14,13 @@ public class Console {
     }
 
     private void showMenuItems() {
+        System.out.println("\n*** Please select the operation which you want to perform: ***");
+        int optionNumber = 0;
         for (MenuOptions menuOption: MenuOptions.values()) {
-            System.out.println(menuOption);
+            System.out.println(optionNumber + ". " + menuOption.getOptionName());
+            optionNumber++;
         }
+        System.out.println("***                                                        ***");
     }
 
 
