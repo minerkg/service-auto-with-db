@@ -34,7 +34,7 @@ public class TransactionsRepositoryImpl implements TransactionsRepository {
     }
 
     @Override
-    public List<Transaction> getTransactionByClientId(int clientId) {
+    public List<Transaction> getTransactionByClientId(long clientId) {
 
         return transactions.stream().filter(trans -> trans.getClientCardId() == clientId).collect(Collectors.toList());
     }
@@ -50,7 +50,7 @@ public class TransactionsRepositoryImpl implements TransactionsRepository {
     }
 
     @Override
-    public List<Transaction> getTransactionByCarId(int carId) {
+    public List<Transaction> getTransactionByCarId(long carId) {
         return transactions.stream().filter(trans -> trans.getCarId() == carId).collect(Collectors.toList());
     }
 

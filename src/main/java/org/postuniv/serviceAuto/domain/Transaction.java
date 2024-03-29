@@ -7,14 +7,14 @@ import java.time.LocalDateTime;
 public class Transaction {
 
     private long transactionId;
-    private int carId;
-    private int clientCardId;
+    private long carId;
+    private long clientCardId;
     private double partPrice; //TODO: atirni camel case re
     private double laborPrice;
     private  LocalDateTime transactionStamp;
 
     //Transaction with client card where labour price has a 10% discount.
-    public Transaction(long transactionId, int carId, int clientCardId, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
+    public Transaction(long transactionId, long carId, long clientCardId, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
         this.transactionId = transactionId;
         this.carId = carId;
         this.clientCardId = clientCardId;
@@ -23,7 +23,7 @@ public class Transaction {
         this.transactionStamp = transactionStamp;
     }
     // Transaction without client card.
-    public Transaction(long transactionId, int carId, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
+    public Transaction(long transactionId, long carId, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
         this.transactionId = transactionId;
         this.carId = carId;
         this.clientCardId = 0;
@@ -40,19 +40,19 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public int getCarId() {
+    public long getCarId() {
         return carId;
     }
 
-    public void setCarId(int carId) {
+    public void setCarId(long carId) {
         this.carId = carId;
     }
 
-    public Integer getClientCardId() {
+    public long getClientCardId() {
         return clientCardId;
     }
 
-    public void setClientCardId(int clientCardId) {
+    public void setClientCardId(long clientCardId) {
         if (clientCardId > 0) {
             this.clientCardId = clientCardId;
         } else this.clientCardId = 0;
@@ -94,8 +94,8 @@ public class Transaction {
                 "transactionId=" + transactionId +
                 ", car_id=" + carId +
                 ", client_card_id=" + clientCardId +
-                ", part_price=" + partPrice +
-                ", labor_price=" + nf.format(laborPrice) +
+                ", part_price=" + nf.format(partPrice) +
+                ", labor_price=" + laborPrice +
                 ", transaction_stamp=" + transactionStamp +
                 '}';
     }
