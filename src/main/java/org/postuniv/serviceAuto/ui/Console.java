@@ -1,8 +1,7 @@
 package org.postuniv.serviceAuto.ui;
-
 import org.postuniv.serviceAuto.service.CarServiceService;
 
-import java.util.Objects;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Console {
@@ -14,7 +13,7 @@ public class Console {
         this.carServiceService = carServiceService;
     }
 
-    private void showMenuItems() {
+    private void showMenuItems () {
         System.out.println("\n*** Please select the operation which you want to perform: ***");
         int optionNumber = 0;
         for (MenuOptions menuOption : MenuOptions.values()) {
@@ -24,7 +23,7 @@ public class Console {
         System.out.println("***                                                        ***");
     }
 
-    private void runCrudMenu() {
+    private void runCrudMenu(String selectedEntry) {
         boolean menuIsRunning = true;
         CrudMenuOptions selectedOption;
         while (menuIsRunning) {
@@ -41,13 +40,41 @@ public class Console {
                     menuIsRunning = false;
                     break;
                 case CREATE:
-                    break;
+                    switch (selectedEntry) {
+                        case "Car":
+                            break;
+                        case "ClientCard":
+                            break;
+                        case "Transaction":
+                            break;
+                    }
                 case READ:
-                    break;
+                    switch (selectedEntry) {
+                        case "Car":
+                            break;
+                        case "ClientCard":
+                            break;
+                        case "Transaction":
+                            break;
+                    }
                 case UPDATE:
-                    break;
+                    switch (selectedEntry) {
+                        case "Car":
+                            break;
+                        case "ClientCard":
+                            break;
+                        case "Transaction":
+                            break;
+                    }
                 case DELETE:
-                    break;
+                    switch (selectedEntry) {
+                        case "Car":
+                            break;
+                        case "ClientCard":
+                            break;
+                        case "Transaction":
+                            break;
+                    }
 
             }
         }
@@ -66,7 +93,10 @@ public class Console {
                     menuIsRunning = false;
                     break;
                 case CURD_OPTIONS:
-                    runCrudMenu();
+                    String[] entryList = new String[] {"Car", "ClientCard", "Transaction"};
+                    System.out.println(Arrays.toString(entryList));
+                    String selectedEntry = entryList[new Scanner(System.in).nextInt()];
+                    runCrudMenu(selectedEntry);
                     break;
                 case SEARCH_CAR_AND_CLIENT_BY_NAME:
                     break;
