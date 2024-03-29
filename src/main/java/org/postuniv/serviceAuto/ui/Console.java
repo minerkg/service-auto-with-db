@@ -3,6 +3,7 @@ import org.postuniv.serviceAuto.service.CarServiceService;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import org.postuniv.serviceAuto.domain.*;
 
 public class Console {
 
@@ -42,37 +43,49 @@ public class Console {
                 case CREATE:
                     switch (selectedEntry) {
                         case "Car":
+                            this.carServiceService.addCar();
                             break;
                         case "ClientCard":
+                            this.carServiceService.addNewClientCard();
                             break;
                         case "Transaction":
+                            this.carServiceService.addNewTransaction();
                             break;
                     }
                 case READ:
                     switch (selectedEntry) {
                         case "Car":
+                            this.carServiceService.getAllCars();
                             break;
                         case "ClientCard":
+                            this.carServiceService.getAllClientCards();
                             break;
                         case "Transaction":
+                            this.carServiceService.getAllTransactions();
                             break;
                     }
                 case UPDATE:
                     switch (selectedEntry) {
                         case "Car":
+                            this.carServiceService.updateCar(idCar, updatedCar);
                             break;
                         case "ClientCard":
+                            this.carServiceService.updateClientCard(idClientCard, updatedClientCard);
                             break;
                         case "Transaction":
+                            this.carServiceService.updateTransaction(idTransaction, updatedTransaction);
                             break;
                     }
                 case DELETE:
                     switch (selectedEntry) {
                         case "Car":
+                            this.carServiceService.removeCar(idCar);
                             break;
                         case "ClientCard":
+                            this.carServiceService.removeClientCard(idClientCard);
                             break;
                         case "Transaction":
+                            this.carServiceService.removeTransaction(idTransaction);
                             break;
                     }
 
