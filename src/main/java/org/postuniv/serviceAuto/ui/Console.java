@@ -6,14 +6,20 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Scanner;
 import org.postuniv.serviceAuto.domain.*;
+import org.postuniv.serviceAuto.service.ClientService;
+import org.postuniv.serviceAuto.service.TransactionService;
 
 public class Console {
 
     private final CarService carService;
+    private final ClientService clientService;
+    private final TransactionService transactionService;
     private MenuOptions menuOptions;
 
-    public Console(CarService carService) {
+    public Console(CarService carService, ClientService clientService, TransactionService transactionService) {
+        this.clientService = clientService;
         this.carService = carService;
+        this.transactionService = transactionService;
     }
 
 
@@ -115,22 +121,22 @@ public class Console {
                             this.carService.addCar(createCar());
                             break;
                         case "ClientCard":
-                            this.carService.addNewClientCard();
+                            this.clientService.addNewClientCard(createClientCard());
                             break;
                         case "Transaction":
-                            this.carService.addNewTransaction();
+                            this.transactionService.addNewTransaction(createTransaction());
                             break;
                     }
                 case READ:
                     switch (selectedEntry) {
                         case "Car":
-                            this.carService.getAllCars();
+                            System.out.println(this.carService.getAllCars());
                             break;
                         case "ClientCard":
-                            this.carService.getAllClientCards();
+                            System.out.println(this.clientService.getAllClientCards());
                             break;
                         case "Transaction":
-                            this.carService.getAllTransactions();
+                            System.out.println(this.transactionService.getAllTransactions());
                             break;
                     }
                 case UPDATE:
@@ -139,10 +145,10 @@ public class Console {
                             this.carService.updateCar(idCar, updatedCar);
                             break;
                         case "ClientCard":
-                            this.carService.updateClientCard(idClientCard, updatedClientCard);
+                            this.clientService.updateClientCard(idClientCard, updatedClientCard);
                             break;
                         case "Transaction":
-                            this.carService.updateTransaction(idTransaction, updatedTransaction);
+                            this.transactionService.updateTransaction(idTransaction, updatedTransaction);
                             break;
                     }
                 case DELETE:
@@ -151,10 +157,10 @@ public class Console {
                             this.carService.removeCar(idCar);
                             break;
                         case "ClientCard":
-                            this.carService.removeClientCard(idClientCard);
+                            this.clientService.removeClientCard(idClientCard);
                             break;
                         case "Transaction":
-                            this.carService.removeTransaction(idTransaction);
+                            this.transactionService.removeTransaction(idTransaction);
                             break;
                     }
             }

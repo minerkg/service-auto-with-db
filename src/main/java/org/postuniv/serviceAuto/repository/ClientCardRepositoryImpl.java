@@ -29,11 +29,9 @@ public class ClientCardRepositoryImpl implements ClientCardRepository{
     }
 
     @Override
-    public ClientCard getClientCard(String firstName, String lastName) {
+    public ClientCard getClientCard(int id) {
         return clientCardsList.stream().
-                filter(clientCard -> clientCard.getFirstName().contains(firstName) ||
-                        clientCard.getLastName().contains(lastName)).
-                findFirst().
+                filter(clientCard -> clientCard.getId() == id).findFirst().
                 orElse(null);
     }
 
