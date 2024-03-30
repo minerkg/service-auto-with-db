@@ -13,7 +13,7 @@ ClientCardRepository {
 
     List<ClientCard> getAllClientCards();
 
-    ClientCard getClientCard(String firstName, String lastName);
+    public ClientCard getClientCard(int id);
 
     boolean updateClientCard(ClientCard updatedClientCard);
 }
