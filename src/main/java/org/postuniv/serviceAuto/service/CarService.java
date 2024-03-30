@@ -14,7 +14,6 @@ import java.util.Date;
 import java.util.List;
 
 public class CarService {
-    // ----------Car services ------------------------------------------------
     private final CarServiceRepository carRepo;
 
 
@@ -60,8 +59,8 @@ public class CarService {
 
     //Throws
     public boolean removeCar(int idCar) {
-        carRepo.delete(idCar);//TODO catch RuntimeException("Car not exist");
-        return true;
+        //TODO catch RuntimeException("Car not exist");
+        return carRepo.delete(idCar);
     }
 
     public List<Car> sortListByAquisitionDate(){
