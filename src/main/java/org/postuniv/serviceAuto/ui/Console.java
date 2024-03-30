@@ -142,24 +142,33 @@ public class Console {
                 case UPDATE:
                     switch (selectedEntry) {
                         case "Car":
-                            this.carService.updateCar(idCar, updatedCar);
+                            Car updatedCar = createCar();
+                            this.carService.updateCar(updatedCar);
                             break;
                         case "ClientCard":
-                            this.clientService.updateClientCard(idClientCard, updatedClientCard);
+                            ClientCard updatedClientCard = createClientCard();
+                            this.clientService.updateClientCard(updatedClientCard);
                             break;
                         case "Transaction":
-                            this.transactionService.updateTransaction(idTransaction, updatedTransaction);
+                            Transaction updatedTransaction = createTransaction();
+                            this.transactionService.updateTransaction(updatedTransaction);
                             break;
                     }
                 case DELETE:
                     switch (selectedEntry) {
                         case "Car":
+                            System.out.println("Please enter the ID of the car which you want to delete:");
+                            int idCar = new Scanner(System.in).nextInt();
                             this.carService.removeCar(idCar);
                             break;
                         case "ClientCard":
+                            System.out.println("Please enter the ID of the car which you want to delete:");
+                            int idClientCard = new Scanner(System.in).nextInt();
                             this.clientService.removeClientCard(idClientCard);
                             break;
                         case "Transaction":
+                            System.out.println("Please enter the ID of the car which you want to delete:");
+                            int idTransaction = new Scanner(System.in).nextInt();
                             this.transactionService.removeTransaction(idTransaction);
                             break;
                     }
