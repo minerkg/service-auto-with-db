@@ -23,25 +23,12 @@ public class TransactionService {
     public boolean addNewTransaction(Transaction transaction) {
         Car car = carService.getCarById(transaction.getCarId());
         ClientCard myClientCard = clientService.getClientCardById(transaction.getClientCardId());
-        if (myClientCard == null) {
-            if (car == null){
-
-            }
-
-
-            if (verifyTransactionParameter(transaction)) {
-                transactionsRepository.addTransaction(transaction);
-                return true;
-            } else return false;
-        } else {
-            if (car.getWarranty()) {
-                transaction.setPartPrice(0);
-            }
-            if (verifyTransactionParameter(transaction)) {
-                transactionsRepository.addTransaction(transaction);
-                return true;
-            } else return false;  //TODO: de corelat cu client card repo.
+        if (car == null){
+            return false;
         }
+        else {
+            transactionsRepository.addTransaction(transaction);
+            return true;}
     }
 
     public List<Transaction> getAllTransactions() {
@@ -79,13 +66,14 @@ public class TransactionService {
         return transactionsRepository.removeTransaction(transactionID);
     }
 
-    public boolean updateTransaction(long id, long carID, long clientCardId, double partPrice, double laborPrice, LocalDateTime localDateTime) {
-        Transaction updatedTransaction = new Transaction(id, carID, clientCardId, partPrice, laborPrice, LocalDateTime.now());
-        if (getTransactionById(id) == null) {
+    public boolean updateTransaction(Transaction transaction) {
+
+        if (getTransactionById(transaction.getTransactionId()) == null) {
             throw new RuntimeException("Transaction not found");    //TODO: handle exception
-        } else return transactionsRepository.updateTransaction(id, updatedTransaction);
+        } else return transactionsRepository.updateTransaction(transaction.getTransactionId(), transaction);
     }
 
-    public boolean removeTransaction(int idTransaction) {
+    public boolean removeTransaction(long idTransaction) {
+        return transactionsRepository.removeTransaction(idTransaction);
     }
 }
