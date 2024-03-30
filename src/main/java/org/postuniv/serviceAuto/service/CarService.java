@@ -71,5 +71,7 @@ public class CarService {
 
 
     public boolean updateCar(Car updatedCar) {
+        return this.carRepo.update(updatedCar);
+
     }
 }
