@@ -28,8 +28,8 @@ public class ClientService {
 
     // ---update
 
-    public boolean updateClientCard(int idClientCard, ClientCard updatedClientCard) {
-        return this.clientCardRepository.updateClientCard();
+    public boolean updateClientCard(ClientCard updatedClientCard) {
+        return this.clientCardRepository.updateClientCard(updatedClientCard);
     }
 
 

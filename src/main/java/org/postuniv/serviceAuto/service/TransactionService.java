@@ -84,4 +84,6 @@ public class TransactionService {
         }else return transactionsRepository.updateTransaction(id,updatedTransaction);
     }
 
+    public boolean removeTransaction(int idTransaction) {
+    }
 }
