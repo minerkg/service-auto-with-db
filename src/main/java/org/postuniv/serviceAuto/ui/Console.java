@@ -1,5 +1,5 @@
 package org.postuniv.serviceAuto.ui;
-import org.postuniv.serviceAuto.service.CarServiceService;
+import org.postuniv.serviceAuto.service.CarService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,17 +9,17 @@ import org.postuniv.serviceAuto.domain.*;
 
 public class Console {
 
-    private final CarServiceService carServiceService;
+    private final CarService carService;
     private MenuOptions menuOptions;
 
-    public Console(CarServiceService carServiceService) {
-        this.carServiceService = carServiceService;
+    public Console(CarService carService) {
+        this.carService = carService;
     }
 
 
 
     private void showMenuItems () {
-        System.out.println("\n*** Please select the operation which you want to perform: ***");
+        System.out.println("\n*** Please select the operation witch you want to perform: ***");
         int optionNumber = 0;
         for (MenuOptions menuOption : MenuOptions.values()) {
             System.out.println(optionNumber + ". " + menuOption.getOptionName());
@@ -112,49 +112,49 @@ public class Console {
                 case CREATE:
                     switch (selectedEntry) {
                         case "Car":
-                            this.carServiceService.addCar();
+                            this.carService.addCar(createCar());
                             break;
                         case "ClientCard":
-                            this.carServiceService.addNewClientCard();
+                            this.carService.addNewClientCard();
                             break;
                         case "Transaction":
-                            this.carServiceService.addNewTransaction();
+                            this.carService.addNewTransaction();
                             break;
                     }
                 case READ:
                     switch (selectedEntry) {
                         case "Car":
-                            this.carServiceService.getAllCars();
+                            this.carService.getAllCars();
                             break;
                         case "ClientCard":
-                            this.carServiceService.getAllClientCards();
+                            this.carService.getAllClientCards();
                             break;
                         case "Transaction":
-                            this.carServiceService.getAllTransactions();
+                            this.carService.getAllTransactions();
                             break;
                     }
                 case UPDATE:
                     switch (selectedEntry) {
                         case "Car":
-                            this.carServiceService.updateCar(idCar, updatedCar);
+                            this.carService.updateCar(idCar, updatedCar);
                             break;
                         case "ClientCard":
-                            this.carServiceService.updateClientCard(idClientCard, updatedClientCard);
+                            this.carService.updateClientCard(idClientCard, updatedClientCard);
                             break;
                         case "Transaction":
-                            this.carServiceService.updateTransaction(idTransaction, updatedTransaction);
+                            this.carService.updateTransaction(idTransaction, updatedTransaction);
                             break;
                     }
                 case DELETE:
                     switch (selectedEntry) {
                         case "Car":
-                            this.carServiceService.removeCar(idCar);
+                            this.carService.removeCar(idCar);
                             break;
                         case "ClientCard":
-                            this.carServiceService.removeClientCard(idClientCard);
+                            this.carService.removeClientCard(idClientCard);
                             break;
                         case "Transaction":
-                            this.carServiceService.removeTransaction(idTransaction);
+                            this.carService.removeTransaction(idTransaction);
                             break;
                     }
             }
