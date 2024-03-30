@@ -20,20 +20,20 @@ public class TransactionService {
 
     }
 
-    public boolean addNewTransaction(long transactionId, Car car, ClientCard clientCard, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
-        ClientCard myClientCard = clientService.(clientCard.getFirstName(), clientCard.getLastName());
+    public boolean addNewTransaction(Transaction transaction) {
+        Car car = carService.getCarById(transaction.getCarId());
+        ClientCard myClientCard = clientService.getClientCardById(transaction.getClientCardId());
         if (myClientCard == null) {
-            Transaction transaction = new Transaction(transactionId, car.getId(), partPrice, laborPrice, transactionStamp);
-            if (car.getWarranty()) {
-                transaction.setPartPrice(0);
+            if (car == null){
+
             }
+
 
             if (verifyTransactionParameter(transaction)) {
                 transactionsRepository.addTransaction(transaction);
                 return true;
             } else return false;
         } else {
-            Transaction transaction = new Transaction(transactionId, car.getId(), clientCard.getId(), partPrice, laborPrice, transactionStamp);
             if (car.getWarranty()) {
                 transaction.setPartPrice(0);
             }
@@ -43,7 +43,8 @@ public class TransactionService {
             } else return false;  //TODO: de corelat cu client card repo.
         }
     }
-    public List<Transaction> getAllTransactions(){
+
+    public List<Transaction> getAllTransactions() {
         return transactionsRepository.getAllTransactions();
     }
 
@@ -74,14 +75,15 @@ public class TransactionService {
         } else return false;
     }
 
-    public boolean removeTransactionById(long transactionID){
+    public boolean removeTransactionById(long transactionID) {
         return transactionsRepository.removeTransaction(transactionID);
     }
-    public boolean updateTransaction(long id, long carID, long clientCardId, double partPrice, double laborPrice, LocalDateTime localDateTime){
-        Transaction updatedTransaction = new Transaction(id,carID,clientCardId,partPrice,laborPrice,LocalDateTime.now());
-        if (getTransactionById(id) == null){
+
+    public boolean updateTransaction(long id, long carID, long clientCardId, double partPrice, double laborPrice, LocalDateTime localDateTime) {
+        Transaction updatedTransaction = new Transaction(id, carID, clientCardId, partPrice, laborPrice, LocalDateTime.now());
+        if (getTransactionById(id) == null) {
             throw new RuntimeException("Transaction not found");    //TODO: handle exception
-        }else return transactionsRepository.updateTransaction(id,updatedTransaction);
+        } else return transactionsRepository.updateTransaction(id, updatedTransaction);
     }
 
     public boolean removeTransaction(int idTransaction) {

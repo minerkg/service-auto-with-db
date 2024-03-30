@@ -43,6 +43,9 @@ public class ClientService {
                 findFirst().
                 orElse(null);
     }
+    public ClientCard getClientCardById(int id){
+        return clientCardRepository.getClientCard(id);
+    }
 
 
     // ---read all

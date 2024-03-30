@@ -7,14 +7,14 @@ import java.time.LocalDateTime;
 public class Transaction {
 
     private long transactionId;
-    private long carId;
-    private long clientCardId;
+    private int carId;
+    private int clientCardId;
     private double partPrice; //TODO: atirni camel case re
     private double laborPrice;
     private  LocalDateTime transactionStamp;
 
     //Transaction with client card where labour price has a 10% discount.
-    public Transaction(long transactionId, long carId, long clientCardId, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
+    public Transaction(long transactionId, int carId, int clientCardId, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
         this.transactionId = transactionId;
         this.carId = carId;
         this.clientCardId = clientCardId;
@@ -23,7 +23,7 @@ public class Transaction {
         this.transactionStamp = transactionStamp;
     }
     // Transaction without client card.
-    public Transaction(long transactionId, long carId, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
+    public Transaction(long transactionId, int carId, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
         this.transactionId = transactionId;
         this.carId = carId;
         this.clientCardId = 0;
@@ -40,19 +40,19 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public long getCarId() {
+    public int getCarId() {
         return carId;
     }
 
-    public void setCarId(long carId) {
+    public void setCarId(int carId) {
         this.carId = carId;
     }
 
-    public long getClientCardId() {
+    public int getClientCardId() {
         return clientCardId;
     }
 
-    public void setClientCardId(long clientCardId) {
+    public void setClientCardId(int clientCardId) {
         if (clientCardId > 0) {
             this.clientCardId = clientCardId;
         } else this.clientCardId = 0;
