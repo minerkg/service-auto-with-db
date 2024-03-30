@@ -126,7 +126,7 @@ public class Console {
                         case "Transaction":
                             this.transactionService.addNewTransaction(createTransaction());
                             break;
-                    }
+                    }break;
                 case READ:
                     switch (selectedEntry) {
                         case "Car":
@@ -138,7 +138,7 @@ public class Console {
                         case "Transaction":
                             System.out.println(this.transactionService.getAllTransactions());
                             break;
-                    }
+                    }break;
                 case UPDATE:
                     switch (selectedEntry) {
                         case "Car":
@@ -153,7 +153,7 @@ public class Console {
                             Transaction updatedTransaction = createTransaction();
                             this.transactionService.updateTransaction(updatedTransaction);
                             break;
-                    }
+                    }break;
                 case DELETE:
                     switch (selectedEntry) {
                         case "Car":
@@ -162,17 +162,21 @@ public class Console {
                             this.carService.removeCar(idCar);
                             break;
                         case "ClientCard":
-                            System.out.println("Please enter the ID of the car which you want to delete:");
+                            System.out.println("Please enter the ID of the card which you want to delete:");
                             int idClientCard = new Scanner(System.in).nextInt();
                             this.clientService.removeClientCard(idClientCard);
                             break;
                         case "Transaction":
-                            System.out.println("Please enter the ID of the car which you want to delete:");
+                            System.out.println("Please enter the ID of the transaction which you want to delete:");
                             int idTransaction = new Scanner(System.in).nextInt();
                             this.transactionService.removeTransaction(idTransaction);
                             break;
-                    }
+                    }break;
+
             }
+            System.out.println("Do you want to perform other CRUD operation ?");
+            String selectedOption2 = new Scanner(System.in).next();
+            menuIsRunning = selectedOption2.equals("yes");
         }
     }
 
