@@ -60,7 +60,5 @@ public class CarServiceRepositoryImpl implements CarServiceRepository {
 //            }
 //        }
     }
-    public void sortListByAquisitionDate(){
-        carList.sort(Comparator.comparing(Car::getYearOfAquisition));
-    }
+
 }

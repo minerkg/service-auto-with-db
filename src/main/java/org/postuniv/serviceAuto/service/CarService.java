@@ -9,6 +9,7 @@ import org.postuniv.serviceAuto.repository.TransactionsRepository;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -63,7 +64,11 @@ public class CarService {
         return true;
     }
 
-
+    public List<Car> sortListByAquisitionDate(){
+        List<Car> carList = getAllCars();
+        carList.sort(Comparator.comparing(Car::getYearOfAquisition));
+        return carList;
+    }
 
 
 
