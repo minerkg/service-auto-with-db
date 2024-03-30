@@ -21,7 +21,7 @@ public class TransactionService {
     }
 
     public boolean addNewTransaction(long transactionId, Car car, ClientCard clientCard, double partPrice, double laborPrice, LocalDateTime transactionStamp) {
-        ClientCard myClientCard = clientService.getClientCard(clientCard.getFirstName(), clientCard.getLastName());
+        ClientCard myClientCard = clientService.(clientCard.getFirstName(), clientCard.getLastName());
         if (myClientCard == null) {
             Transaction transaction = new Transaction(transactionId, car.getId(), partPrice, laborPrice, transactionStamp);
             if (car.getWarranty()) {

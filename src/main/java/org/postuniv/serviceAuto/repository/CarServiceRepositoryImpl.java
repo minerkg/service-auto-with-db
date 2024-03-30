@@ -1,8 +1,8 @@
 package org.postuniv.serviceAuto.repository;
 
 import org.postuniv.serviceAuto.domain.Car;
+
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class CarServiceRepositoryImpl implements CarServiceRepository {
@@ -18,23 +18,28 @@ public class CarServiceRepositoryImpl implements CarServiceRepository {
     }
 
     @Override
-    public void save(Car car) {
+    public boolean save(Car car) {
         if (findById(car.getId()) != null) {
             throw new RuntimeException("Duplicate ID");
+        } else {
+            carList.add(car);
+            return true;
         }
-        carList.add(car);
     }
 
     @Override
-    public void update(Car car) {
-    Car updateCar = findById(car.getId());
-    if (updateCar == null){
-        throw new RuntimeException("Car not found");
-    }
-    updateCar.setModel(car.getModel());
-    updateCar.setYearOfAquisition(car.getYearOfAquisition());
-    updateCar.setKm(car.getKm());
-    updateCar.setWarranty(car.getWarranty());
+    public boolean update(Car car) {
+        Car updateCar = findById(car.getId());
+        if (updateCar == null) {
+            throw new RuntimeException("Car not found");
+        } else {
+
+            updateCar.setModel(car.getModel());
+            updateCar.setYearOfAquisition(car.getYearOfAquisition());
+            updateCar.setKm(car.getKm());
+            updateCar.setWarranty(car.getWarranty());
+            return true;
+        }
     }
 
     @Override
@@ -48,17 +53,14 @@ public class CarServiceRepositoryImpl implements CarServiceRepository {
     }
 
     @Override
-    public void delete(int id) {
-        if (findById(id) == null){
+    public boolean delete(int id) {
+        Car car = findById(id);
+        if (car == null) {
             throw new RuntimeException("Car not exist");
         }
-        carList.remove(findById(id));
-//        for (Car carToBeRemove : carList) {
-//            if (carToBeRemove.equals(car)){
-//                carList.remove(carToBeRemove);
-//                break;
-//            }
-//        }
+        carList.remove(car);
+        return true;
+
     }
 
 }
