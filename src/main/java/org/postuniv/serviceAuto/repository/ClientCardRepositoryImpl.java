@@ -37,12 +37,7 @@ public class ClientCardRepositoryImpl implements ClientCardRepository{
 
     @Override
     public boolean updateClientCard(ClientCard updatedClientCard) {
-        for (ClientCard clientCard: clientCardsList) {
-            if (clientCard.getId() == updatedClientCard.getId()) {
-                clientCard = updatedClientCard;
-                return true;
-            }
-        }
-        return false;
+        clientCardsList = clientCardsList.stream().map(clientCard -> clientCard.getId() == updatedClientCard.getId()?clientCard=updatedClientCard:clientCard).toList();
+        return true;
     }
 }

@@ -33,7 +33,6 @@ public class CarServiceRepositoryImpl implements CarServiceRepository {
         if (updateCar == null) {
             throw new RuntimeException("Car not found");
         } else {
-
             updateCar.setModel(car.getModel());
             updateCar.setYearOfAquisition(car.getYearOfAquisition());
             updateCar.setKm(car.getKm());
