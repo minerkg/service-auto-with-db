@@ -9,11 +9,13 @@ import java.time.LocalDate;
 
 
 public class ReadCarFromFile {
+    public ReadCarFromFile() {
+    }
 
-    public static void readFromTextFile(CarServiceRepositoryImpl carServiceRepository){
+    public static void readFromTextFile(CarServiceRepository carServiceRepository){
 
         try {
-            String filePath = "src/main/java/org/postuniv/serviceAuto/repository/mock_cars.txt";
+            String filePath = "src/main/java/org/postuniv/serviceAuto/mock_data/mock_cars.txt";
             FileReader fileReader = new FileReader(filePath);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String currentLine;

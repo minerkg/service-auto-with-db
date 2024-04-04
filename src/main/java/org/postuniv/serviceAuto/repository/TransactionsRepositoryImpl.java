@@ -80,6 +80,7 @@ public class TransactionsRepositoryImpl implements TransactionsRepository {
             transactionFound.setClientCardId(newTransaction.getClientCardId());
             transactionFound.setPartPrice(newTransaction.getPartPrice());
             transactionFound.setLaborPrice(newTransaction.getLaborPrice());
+            newTransaction = transactionFound;
             return true;
         }
     }

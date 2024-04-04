@@ -67,12 +67,11 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car " +
-                "ID[" + id +
+        return "Car ID[" + id +
                 "], model=" + model +
-                ", yearOfAquisition=" + yearOfAquisition +
-                ", km= " + km +
-                ", warranty=" + warranty +
-                '}';
+                ", Acquisition year: " + yearOfAquisition.getYear() +
+                ", km= [" + km +
+                "], warranty: " + warranty +
+                '\n';
     }
 }

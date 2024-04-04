@@ -2,6 +2,7 @@ package org.postuniv.serviceAuto.service;
 
 import org.postuniv.serviceAuto.domain.ClientCard;
 import org.postuniv.serviceAuto.repository.ClientCardRepository;
+import org.postuniv.serviceAuto.repository.ReadClientCardFromFile;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -12,6 +13,7 @@ public class ClientService {
 
     public ClientService(ClientCardRepository clientCardRepository) {
         this.clientCardRepository = clientCardRepository;
+        ReadClientCardFromFile.readFromTextFile(clientCardRepository);
     }
 
     // ---add

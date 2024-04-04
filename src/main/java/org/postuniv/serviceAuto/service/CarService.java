@@ -5,6 +5,7 @@ import org.postuniv.serviceAuto.domain.ClientCard;
 import org.postuniv.serviceAuto.domain.Transaction;
 import org.postuniv.serviceAuto.repository.CarServiceRepository;
 import org.postuniv.serviceAuto.repository.ClientCardRepository;
+import org.postuniv.serviceAuto.repository.ReadCarFromFile;
 import org.postuniv.serviceAuto.repository.TransactionsRepository;
 
 import java.time.LocalDate;
@@ -16,11 +17,9 @@ import java.util.List;
 public class CarService {
     private final CarServiceRepository carRepo;
 
-
-
     public CarService(CarServiceRepository carRepo) {
         this.carRepo = carRepo;
-
+        ReadCarFromFile.readFromTextFile(carRepo);
     }
 
     public List<Car> getAllCars() {

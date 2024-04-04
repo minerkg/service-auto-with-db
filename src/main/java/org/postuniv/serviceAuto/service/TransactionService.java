@@ -3,6 +3,7 @@ package org.postuniv.serviceAuto.service;
 import org.postuniv.serviceAuto.domain.Car;
 import org.postuniv.serviceAuto.domain.ClientCard;
 import org.postuniv.serviceAuto.domain.Transaction;
+import org.postuniv.serviceAuto.repository.ReadTransactionFromFile;
 import org.postuniv.serviceAuto.repository.TransactionsRepository;
 
 import java.time.LocalDateTime;
@@ -17,19 +18,34 @@ public class TransactionService {
         this.transactionsRepository = transactionsRepository;
         this.clientService = clientService;
         this.carService = carService;
+        ReadTransactionFromFile.readTransaction(this);
+
 
     }
 
     public boolean addNewTransaction(Transaction transaction) {
+        if (applyDiscountsForTransaction(transaction)){
+            transactionsRepository.addTransaction(transaction);
+            return true;
+        }else return false;
+    }
+
+    public boolean applyDiscountsForTransaction(Transaction transaction) {
         Car car = carService.getCarById(transaction.getCarId());
         ClientCard myClientCard = clientService.getClientCardById(transaction.getClientCardId());
-        if (car == null){
+        double price = transaction.getLaborPrice();
+        if(car == null){
             return false;
         }
-        else {
-            transactionsRepository.addTransaction(transaction);
-            return true;}
+        if (myClientCard != null) {
+            transaction.setLaborPrice(price - (transaction.getLaborPrice() * 10) / 100);
+        }
+        if (car.getWarranty()){
+            transaction.setPartPrice(0);
+        }
+        return true;
     }
+
 
     public List<Transaction> getAllTransactions() {
         return transactionsRepository.getAllTransactions();
@@ -70,7 +86,9 @@ public class TransactionService {
 
         if (getTransactionById(transaction.getTransactionId()) == null) {
             throw new RuntimeException("Transaction not found");    //TODO: handle exception
-        } else return transactionsRepository.updateTransaction(transaction.getTransactionId(), transaction);
+        } else {
+            applyDiscountsForTransaction(transaction);
+            return transactionsRepository.updateTransaction(transaction.getTransactionId(), transaction);}
     }
 
     public boolean removeTransaction(long idTransaction) {
