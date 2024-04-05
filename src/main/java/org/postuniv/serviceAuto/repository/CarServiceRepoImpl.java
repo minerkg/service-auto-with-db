@@ -13,17 +13,17 @@ public class CarServiceRepoImpl <T> implements CarServiceRepo <T> {
 
     @Override
     public List<T> findAll() {
-        return null;
+        return entityList.stream().toList();
     }
 
     @Override
-    public boolean save(T Entity) {
-        return false;
+    public boolean save(T entity) {
+        return entityList.add(entity);
     }
 
     @Override
-    public boolean update(T Entity) {
-        return false;
+    public boolean update(T entity) {
+        return entityList.id;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class CarServiceRepoImpl <T> implements CarServiceRepo <T> {
     }
 
     @Override
-    public boolean delete(int EntityId) {
+    public boolean delete(int entityId) {
         return false;
     }
 }

@@ -3,7 +3,7 @@ package org.postuniv.serviceAuto.domain;
 import java.time.LocalDate;
 import java.util.Calendar;
 
-public class Car {
+public class Car implements Entity{
     private int id;
     private String model;
     private LocalDate yearOfAquisition;

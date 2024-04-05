@@ -4,8 +4,9 @@ import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
 
-public class Transaction {
+public class Transaction implements Entity{
 
+    private int id;
     private long transactionId;
     private int carId;
     private int clientCardId;
@@ -98,5 +99,10 @@ public class Transaction {
                 ", labor_price=" + laborPrice +
                 ", transaction_stamp=" + transactionStamp +
                 '}';
+    }
+
+    @Override
+    public int getId() {
+        return this.id;
     }
 }
