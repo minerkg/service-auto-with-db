@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 public class ReadCarFromFile {
 
-    public static void readFromTextFile(CarServiceRepositoryImpl carServiceRepository){
+    public static void readFromTextFile(CarServiceRepo<Car> carServiceRepository){
 
         try {
             String filePath = "src/main/java/org/postuniv/serviceAuto/repository/mock_cars.txt";
