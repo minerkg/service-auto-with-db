@@ -2,10 +2,7 @@ package org.postuniv.serviceAuto.service;
 
 import org.postuniv.serviceAuto.domain.ClientCard;
 import org.postuniv.serviceAuto.repository.CarServiceRepo;
-import org.postuniv.serviceAuto.repository.ClientCardRepository;
 
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class ClientService {
