@@ -3,6 +3,7 @@ package org.postuniv.serviceAuto.service;
 import org.postuniv.serviceAuto.domain.Car;
 import org.postuniv.serviceAuto.domain.ClientCard;
 import org.postuniv.serviceAuto.domain.Transaction;
+import org.postuniv.serviceAuto.repository.CarServiceRepo;
 import org.postuniv.serviceAuto.repository.CarServiceRepository;
 import org.postuniv.serviceAuto.repository.ClientCardRepository;
 import org.postuniv.serviceAuto.repository.TransactionsRepository;
@@ -14,11 +15,11 @@ import java.util.Date;
 import java.util.List;
 
 public class CarService {
-    private final CarServiceRepository carRepo;
+    private final CarServiceRepo<Car> carRepo;
 
 
 
-    public CarService(CarServiceRepository carRepo) {
+    public CarService(CarServiceRepo<Car> carRepo) {
         this.carRepo = carRepo;
 
     }

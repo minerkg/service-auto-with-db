@@ -37,7 +37,7 @@ public class Transaction implements Entity{
         return transactionId;
     }
 
-    public void setTransactionId(long transactionId) {
+    public void setTransactionId(int transactionId) {
         this.transactionId = transactionId;
     }
 
