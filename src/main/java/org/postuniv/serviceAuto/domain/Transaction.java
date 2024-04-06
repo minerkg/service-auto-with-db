@@ -4,8 +4,9 @@ import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
 
-public class Transaction {
+public class Transaction implements Entity{
 
+    private int id;
     private long transactionId;
     private int carId;
     private int clientCardId;
@@ -36,7 +37,7 @@ public class Transaction {
         return transactionId;
     }
 
-    public void setTransactionId(long transactionId) {
+    public void setTransactionId(int transactionId) {
         this.transactionId = transactionId;
     }
 
@@ -98,5 +99,10 @@ public class Transaction {
                 "] labor_price [" + laborPrice +
                 "] time [" + transactionStamp +
                 ']' + "\n";
+    }
+
+    @Override
+    public int getId() {
+        return this.id;
     }
 }

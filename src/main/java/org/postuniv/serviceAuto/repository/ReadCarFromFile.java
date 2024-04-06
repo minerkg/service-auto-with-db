@@ -12,7 +12,7 @@ public class ReadCarFromFile {
     public ReadCarFromFile() {
     }
 
-    public static void readFromTextFile(CarServiceRepository carServiceRepository){
+    public static void readFromTextFile(CarServiceRepo<Car> carServiceRepository){
 
         try {
             String filePath = "src/main/java/org/postuniv/serviceAuto/mock_data/mock_cars.txt";

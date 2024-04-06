@@ -4,7 +4,7 @@ package org.postuniv.serviceAuto.domain;
 import java.time.LocalDate;
 
 
-public class ClientCard {
+public class ClientCard implements Entity{
 
     //the ID is unique
     private int id;

@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 public class ReadClientCardFromFile {
 
-    public static void readFromTextFile(ClientCardRepository clientCardRepository){
+    public static void readFromTextFile(CarServiceRepo<ClientCard> clientCardRepository){
 
         try {
             String filePath = "src/main/java/org/postuniv/serviceAuto/mock_data/mock_clientcard.txt";
@@ -31,7 +31,7 @@ public class ReadClientCardFromFile {
                 LocalDate registrationDateFormatted = LocalDate.parse(registrationDate);
 
                 ClientCard clientCard = new ClientCard(id,firstName,lastName,CNP,birthDateFormatted,registrationDateFormatted);
-                clientCardRepository.addNewClientCard(clientCard);
+                clientCardRepository.save(clientCard);
 
             }
             bufferedReader.close();
