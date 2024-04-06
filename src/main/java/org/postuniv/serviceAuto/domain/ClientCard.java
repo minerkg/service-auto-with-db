@@ -75,13 +75,11 @@ public class ClientCard implements Entity{
 
     @Override
     public String toString() {
-        return "ClientCard{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", CNP='" + CNP + '\'' +
-                ", birthDate=" + birthDate +
-                ", registrationDate=" + registrationDate +
-                '}';
+        return "ClientCard ID[" + id +
+                "] " + firstName + " " +
+                lastName +
+                " [" + CNP +
+                "] BD: " + birthDate.getYear() +
+                ", Registered in: " + registrationDate + "." + "\n";
     }
 }

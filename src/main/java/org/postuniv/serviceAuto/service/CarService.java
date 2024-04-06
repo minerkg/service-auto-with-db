@@ -1,8 +1,8 @@
 package org.postuniv.serviceAuto.service;
 
 import org.postuniv.serviceAuto.domain.Car;
+import org.postuniv.serviceAuto.repository.ReadCarFromFile;
 import org.postuniv.serviceAuto.repository.CarServiceRepo;
-
 import java.util.Comparator;
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class CarService {
 
     public CarService(CarServiceRepo<Car> carRepo) {
         this.carRepo = carRepo;
-
+        ReadCarFromFile.readFromTextFile(carRepo);
     }
 
     public List<Car> getAllCars() {

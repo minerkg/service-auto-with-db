@@ -4,6 +4,7 @@ import org.postuniv.serviceAuto.domain.Car;
 import org.postuniv.serviceAuto.domain.ClientCard;
 import org.postuniv.serviceAuto.domain.Transaction;
 import org.postuniv.serviceAuto.repository.CarServiceRepo;
+import org.postuniv.serviceAuto.repository.ReadTransactionFromFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,6 +19,8 @@ public class TransactionService {
         this.transactionsRepository = transactionsRepository;
         this.clientService = clientService;
         this.carService = carService;
+        ReadTransactionFromFile.readTransaction(this);
+
 
     }
 
@@ -27,15 +30,29 @@ public class TransactionService {
     }
 
     public boolean addNewTransaction(Transaction transaction) {
+        if (applyDiscountsForTransaction(transaction)) {
+            transactionsRepository.save(transaction);
+            return true;
+        } else return false;
+    }
+
+    public boolean applyDiscountsForTransaction(Transaction transaction) {
         Car car = carService.getCarById(transaction.getCarId());
         ClientCard myClientCard = clientService.getClientCardById(transaction.getClientCardId());
-        if (car == null){
+        double price = transaction.getLaborPrice();
+        if (car == null) {
             return false;
         }
-        else {
-            transactionsRepository.save(transaction);
-            return true;}
+        if (myClientCard != null) {
+            transaction.setLaborPrice(price - (transaction.getLaborPrice() * 10) / 100);
+        }
+        if (car.getWarranty()) {
+            transaction.setPartPrice(0);
+        }
+        return true;
+
     }
+
 
     public List<Transaction> getAllTransactions() {
         return transactionsRepository.findAll();
@@ -76,10 +93,23 @@ public class TransactionService {
 
         if (getTransactionById((int) transaction.getTransactionId()) == null) {
             throw new RuntimeException("Transaction not found");    //TODO: handle exception
-        } else return transactionsRepository.update(transaction);
+        } else {
+            applyDiscountsForTransaction(transaction);
+            return transactionsRepository.update(transaction);
+        }
     }
 
     public boolean removeTransaction(int idTransaction) {
         return transactionsRepository.delete(idTransaction);
     }
+
+    public List<Transaction> getTransactionByDate(LocalDateTime startingDate, LocalDateTime endingDate) {
+        return getAllTransactions().
+                stream().
+                filter(
+                        transaction -> transaction.getTransactionStamp().isAfter(startingDate) &&
+                                transaction.getTransactionStamp().isBefore(endingDate)).
+                collect(Collectors.toList());
+    }
+
 }
