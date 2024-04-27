@@ -18,8 +18,6 @@ public class TransactionService {
         this.transactionsRepository = transactionsRepository;
         this.clientService = clientService;
         this.carService = carService;
-        ReadTransactionFromFile.readTransaction(this);
-
 
     }
 

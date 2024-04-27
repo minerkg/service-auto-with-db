@@ -10,7 +10,6 @@ public class ClientService {
 
     public ClientService(CarServiceRepo<ClientCard> clientCardRepository) {
         this.clientCardRepository = clientCardRepository;
-        ReadClientCardFromFile.readFromTextFile(clientCardRepository);
     }
 
     // ---add
