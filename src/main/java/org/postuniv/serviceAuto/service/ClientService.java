@@ -1,7 +1,6 @@
 package org.postuniv.serviceAuto.service;
 
 import org.postuniv.serviceAuto.domain.ClientCard;
-import org.postuniv.serviceAuto.repository.ReadClientCardFromFile;
 import org.postuniv.serviceAuto.repository.CarServiceRepo;
 
 import java.util.List;
@@ -11,7 +10,6 @@ public class ClientService {
 
     public ClientService(CarServiceRepo<ClientCard> clientCardRepository) {
         this.clientCardRepository = clientCardRepository;
-        ReadClientCardFromFile.readFromTextFile(clientCardRepository);
     }
 
     // ---add

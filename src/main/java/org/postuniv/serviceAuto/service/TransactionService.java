@@ -4,7 +4,6 @@ import org.postuniv.serviceAuto.domain.Car;
 import org.postuniv.serviceAuto.domain.ClientCard;
 import org.postuniv.serviceAuto.domain.Transaction;
 import org.postuniv.serviceAuto.repository.CarServiceRepo;
-import org.postuniv.serviceAuto.repository.ReadTransactionFromFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,8 +18,6 @@ public class TransactionService {
         this.transactionsRepository = transactionsRepository;
         this.clientService = clientService;
         this.carService = carService;
-        ReadTransactionFromFile.readTransaction(this);
-
 
     }
 
