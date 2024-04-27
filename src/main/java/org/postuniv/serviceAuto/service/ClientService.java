@@ -1,7 +1,6 @@
 package org.postuniv.serviceAuto.service;
 
 import org.postuniv.serviceAuto.domain.ClientCard;
-import org.postuniv.serviceAuto.repository.ReadClientCardFromFile;
 import org.postuniv.serviceAuto.repository.CarServiceRepo;
 
 import java.util.List;
