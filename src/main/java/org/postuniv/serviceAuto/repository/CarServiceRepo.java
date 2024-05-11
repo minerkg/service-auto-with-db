@@ -1,9 +1,10 @@
 package org.postuniv.serviceAuto.repository;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface CarServiceRepo <T> {
-    List<T> findAll();
+    List<T> findAll() throws SQLException;
 
     boolean save(T Entity);
 
